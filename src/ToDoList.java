@@ -8,6 +8,11 @@ public class ToDoList {
         todos = new ArrayList<>();
     }
     
+    
+    public void addTodo(String todo) {
+        todos.add(todo);
+        System.out.println("Todo added: " + todo);
+    }
     public void displayTodos() {
         if (todos.isEmpty()) {
             System.out.println("No todos found.");
@@ -26,7 +31,8 @@ public class ToDoList {
            while (true) {
                System.out.println("\nMenu:");
                System.out.println("1. Display all todos");
-               System.out.println("2. Exit");
+               System.out.println("2. Add a new todo");
+               System.out.println("3. Exit");
                System.out.print("Enter your choice: ");
                int choice = scanner.nextInt();
                scanner.nextLine(); // Consume newline
@@ -36,6 +42,11 @@ public class ToDoList {
                        todoList.displayTodos();
                        break;
                    case 2:
+                       System.out.print("Enter the new todo: ");
+                       String newTodo = scanner.nextLine();
+                       todoList.addTodo(newTodo);
+                       break;
+                   case 3:
                        System.out.println("Exiting...");
                        System.exit(0);
                    default:
