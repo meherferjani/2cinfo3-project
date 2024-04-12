@@ -4,7 +4,7 @@
 /**
  * 
  */
-module FirstProject {
+module FirstApp {
 	
 	
 }
