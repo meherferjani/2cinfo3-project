@@ -19,6 +19,10 @@ public class ToDoList {
         }
     }
 
+    public void deleteAllTodos() {
+        todos.clear();
+        System.out.println("All todos deleted.");
+    }
     public static void main(String[] args) {
     	   ToDoList todoList = new ToDoList();
            Scanner scanner = new Scanner(System.in);
@@ -26,7 +30,8 @@ public class ToDoList {
            while (true) {
                System.out.println("\nMenu:");
                System.out.println("1. Display all todos");
-               System.out.println("2. Exit");
+               System.out.println("2. Delete all todos");
+               System.out.println("3. Exit");
                System.out.print("Enter your choice: ");
                int choice = scanner.nextInt();
                scanner.nextLine(); // Consume newline
@@ -36,6 +41,9 @@ public class ToDoList {
                        todoList.displayTodos();
                        break;
                    case 2:
+                       todoList.deleteAllTodos();
+                       break;
+                   case 3:
                        System.out.println("Exiting...");
                        System.exit(0);
                    default:
