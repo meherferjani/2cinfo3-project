@@ -13,12 +13,21 @@ public class StudentCRUD {
     public void addStudent(Student student) {
         students.add(student);
     }
- // Delete operation
+ 
+
+// Update operation
+    public void updateStudent(int id, String newName, int newAge) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                student.setName(newName);
+                student.setAge(newAge);
+                return;
+            }
+        }
+        // Delete operation
     public void deleteStudent(int id) {
         students.removeIf(student -> student.getId() == id);
     }
-
-
    
     // Main method for testing the StudentCRUD class
     public static void main(String[] args) {
@@ -28,8 +37,11 @@ public class StudentCRUD {
         studentCRUD.addStudent(new Student(1, "John", 20));
         studentCRUD.addStudent(new Student(2, "Alice", 22));
 
-     // Delete operation
-        studentCRUD.deleteStudent(2);
+
+          // Update operation
+        studentCRUD.updateStudent(1, "John Doe", 21);
+             // Delete operation
+             studentCRUD.deleteStudent(2);
        
        
     }
@@ -65,4 +77,5 @@ class Student {
     public void setAge(int age) {
         this.age = age;
     }
+}
 }
