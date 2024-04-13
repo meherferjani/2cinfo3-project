@@ -14,7 +14,15 @@ public class StudentCRUD {
         students.add(student);
     }
 
-
+// Update operation
+    public void updateStudent(int id, String newName, int newAge) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                student.setName(newName);
+                student.setAge(newAge);
+                return;
+            }
+        }
    
     // Main method for testing the StudentCRUD class
     public static void main(String[] args) {
@@ -24,7 +32,8 @@ public class StudentCRUD {
         studentCRUD.addStudent(new Student(1, "John", 20));
         studentCRUD.addStudent(new Student(2, "Alice", 22));
 
-        
+          // Update operation
+        studentCRUD.updateStudent(1, "John Doe", 21);
        
        
     }
