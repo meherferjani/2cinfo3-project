@@ -23,6 +23,16 @@ public class StudentCRUD {
                 return;
             }
         }
+// Retrieve all students
+    public List<Student> getAllStudents() {
+        return students;
+    }
+// Retrieve all students
+        List<Student> allStudents = studentCRUD.getAllStudents();
+        System.out.println("All students:");
+        for (Student s : allStudents) {
+            System.out.println(s.getName() + " - " + s.getAge());
+        }
    
     // Main method for testing the StudentCRUD class
     public static void main(String[] args) {
