@@ -13,7 +13,15 @@ public class StudentCRUD {
     public void addStudent(Student student) {
         students.add(student);
     }
- 
+ // Read operation
+    public Student getStudentById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null; // If student with given id is not found
+    }
 
 // Update operation
     public void updateStudent(int id, String newName, int newAge) {
@@ -43,6 +51,13 @@ public class StudentCRUD {
              // Delete operation
              studentCRUD.deleteStudent(2);
        
+        // Read operation
+        Student student = studentCRUD.getStudentById(1);
+        if (student != null) {
+            System.out.println("Student found: " + student.getName());
+        } else {
+            System.out.println("Student not found.");
+        }       
        
     }
 }
