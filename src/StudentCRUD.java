@@ -14,7 +14,17 @@ public class StudentCRUD {
         students.add(student);
     }
 
-// Update operation
+    // Read operation
+    public Student getStudentById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null; // If student with given id is not found
+    }
+
+    // Update operation
     public void updateStudent(int id, String newName, int newAge) {
         for (Student student : students) {
             if (student.getId() == id) {
@@ -23,17 +33,21 @@ public class StudentCRUD {
                 return;
             }
         }
-// Retrieve all students
+        // If student with given id is not found, you can throw an exception or handle it as you want
+        // For simplicity, let's just print a message
+        System.out.println("Student with ID " + id + " not found.");
+    }
+
+    // Delete operation
+    public void deleteStudent(int id) {
+        students.removeIf(student -> student.getId() == id);
+    }
+
+    // Retrieve all students
     public List<Student> getAllStudents() {
         return students;
     }
-// Retrieve all students
-        List<Student> allStudents = studentCRUD.getAllStudents();
-        System.out.println("All students:");
-        for (Student s : allStudents) {
-            System.out.println(s.getName() + " - " + s.getAge());
-        }
-   
+
     // Main method for testing the StudentCRUD class
     public static void main(String[] args) {
         StudentCRUD studentCRUD = new StudentCRUD();
@@ -42,10 +56,26 @@ public class StudentCRUD {
         studentCRUD.addStudent(new Student(1, "John", 20));
         studentCRUD.addStudent(new Student(2, "Alice", 22));
 
-          // Update operation
+        // Read operation
+        Student student = studentCRUD.getStudentById(1);
+        if (student != null) {
+            System.out.println("Student found: " + student.getName());
+        } else {
+            System.out.println("Student not found.");
+        }
+
+        // Update operation
         studentCRUD.updateStudent(1, "John Doe", 21);
+
+        // Delete operation
+        studentCRUD.deleteStudent(2);
        
-       
+        // Retrieve all students
+        List<Student> allStudents = studentCRUD.getAllStudents();
+        System.out.println("All students:");
+        for (Student s : allStudents) {
+            System.out.println(s.getName() + " - " + s.getAge());
+        }
     }
 }
 
