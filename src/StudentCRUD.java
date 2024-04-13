@@ -13,6 +13,10 @@ public class StudentCRUD {
     public void addStudent(Student student) {
         students.add(student);
     }
+ // Delete operation
+    public void deleteStudent(int id) {
+        students.removeIf(student -> student.getId() == id);
+    }
 
 
    
@@ -24,7 +28,8 @@ public class StudentCRUD {
         studentCRUD.addStudent(new Student(1, "John", 20));
         studentCRUD.addStudent(new Student(2, "Alice", 22));
 
-        
+     // Delete operation
+        studentCRUD.deleteStudent(2);
        
        
     }
